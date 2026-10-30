@@ -1,0 +1,88 @@
+// 项目数据统一维护在这里。请只公开自己有权展示的内容，不要提交公司机密、客户信息或内部源码。
+// 保留现有字段，供 Projects.vue、ProjectDetail.vue 和 Home.vue 共用。
+export const projects = [
+  {
+    id: 'stm32-rtos', number: '01', category: 'FIRMWARE / RTOS', title: 'STM32 多节点测量与通信系统',
+    summary: '围绕测量设备开展外设驱动、RS485 多节点通信、Modbus 协议处理与系统联调。',
+    platform: 'STM32F407ZGT6 / STM32G0', tags: ['C', 'RT-Thread', 'UART DMA', 'RS485', 'Modbus TCP/RTU'],
+    accent: 'cyan', status: '工程实践',
+    overview: '项目面向多设备测量与数据采集场景。系统包含主控与多个从节点，涉及串口数据接收、协议解析、RS485 收发方向控制，以及 Modbus TCP/RTU 通信。公开页面重点记录软件架构、通信流程和调试方法，不展示客户专用协议或涉密信息。',
+    contributions: [
+      '在 STM32F407 平台开展 UART DMA + IDLE 接收处理，整理数据缓存与协议解析流程。',
+      '实现或维护 RS485 收发方向控制、从机轮询与多节点通信相关逻辑。',
+      '参与 Modbus TCP/RTU 通信调试、日志完善和现场问题定位。',
+      '根据实际工程需要梳理任务优先级、数据交互和异常处理流程。',
+    ],
+    highlights: ['UART DMA + IDLE', 'RS485 多节点', 'Modbus TCP/RTU'],
+  },
+  {
+    id: 'resistance-measurement', number: '02', category: 'FIRMWARE / MEASUREMENT', title: '高精度电阻测量与数据采集',
+    summary: '基于 STM32 与 ADS1255 开展高精度 ADC 数据采集、DRDY 中断处理和测量流程控制。',
+    platform: 'STM32F103C8T6 / ADS1255', tags: ['C', 'STM32', 'ADS1255', 'SPI', 'DRDY', 'ADC'],
+    accent: 'violet', status: '工程实践',
+    overview: '项目围绕电阻测量设备的数据采集部分展开，使用外部高精度 ADC 获取测量数据，并结合 DRDY 信号协调数据读取。可在后续补充实际量程、采样配置、校准方法和测试记录；在没有测试依据前不对测量精度作数值承诺。',
+    contributions: [
+      '使用 STM32F103 与 ADS1255 进行数据采集相关开发。',
+      '利用 DRDY 引脚外部中断协调 ADC 数据就绪处理。',
+      '梳理 ADC 采样配置、数据读取和测量档位控制相关逻辑。',
+      '结合实际电路检查参考电压、模拟输入和测量接线等影响因素。',
+    ],
+    highlights: ['高精度 ADC', 'DRDY 中断', '测量流程控制'],
+  },
+  {
+    id: 'zephyr-sensing', number: '03', category: 'EMBEDDED / SENSING', title: 'nRF52840 + Zephyr 传感器平台',
+    summary: '基于 Zephyr 集成运动传感器，并推进 Acconeer A121 雷达测距驱动适配。',
+    platform: 'nRF52840', tags: ['C', 'Zephyr 3.7', 'A121', 'BMI270', 'I²C'],
+    accent: 'violet', status: '开发中',
+    overview: '项目以 nRF52840 为主控，使用 Zephyr RTOS 组织线程、日志和外设驱动，并面向铁路制动铁鞋状态感知场景探索雷达测距与运动状态检测。当前工作包含板级配置、传感器总线调试和 A121 驱动适配，功能状态以实际验证结果为准。',
+    contributions: [
+      '整理 Zephyr 工程配置，并处理自定义硬件的外部晶振与引脚配置差异。',
+      '完成 BMI270 I²C 通信相关调试，并规划线程化驱动和运动中断处理。',
+      '推进 Acconeer A121 雷达测距方案的驱动移植与集成验证。',
+      '结合目标应用整理测距范围、分辨率和运动状态感知的验证需求。',
+    ],
+    highlights: ['Zephyr 驱动模型', 'I²C 传感器集成', '雷达测距探索'],
+  },
+  {
+    id: 'robot-welding', number: '04', category: 'ROBOTICS / MOTION', title: '工业机器人轨迹与摆焊控制',
+    summary: '使用 JAKA SDK 与 C++/Qt 控制程序开展伺服运动验证、轨迹生成和摆焊路径计算。',
+    platform: 'JAKA Zu 5', tags: ['C++', 'Qt', 'Robot SDK', 'ServoJ', 'Trajectory'],
+    accent: 'amber', status: '工程实践',
+    overview: '项目围绕工业机器人二次开发，重点关注 SDK 控制流程、伺服运动接口、轨迹点生成和摆焊几何计算。主页可以展示脱敏后的算法示意图、轨迹规划说明和界面截图；实际运行范围与安全条件应以现场配置为准。',
+    contributions: [
+      '搭建机器人 SDK 的基础调用流程，并验证连接、上电、使能和错误处理步骤。',
+      '使用 ServoJ 接口进行关节运动与轨迹采样相关验证。',
+      '研究三角摆焊轨迹的几何关系、焊接方向与路径参数化。',
+      '使用 C++/Qt 整理控制端程序结构与调试入口。',
+    ],
+    highlights: ['机器人二次开发', 'ServoJ 轨迹验证', '摆焊几何算法'],
+  },
+  {
+    id: 'lora-iap', number: '05', category: 'FIRMWARE / LOW POWER', title: 'LoRa 终端与固件升级机制',
+    summary: '围绕 STM32WLE5、LVGL 人机交互、低功耗运行和 IAP 固件升级开展开发。',
+    platform: 'STM32WLE5CCU6', tags: ['C', 'STM32WL', 'LoRa', 'LVGL', 'IAP', 'Ymodem'],
+    accent: 'cyan', status: '工程实践',
+    overview: '项目围绕 LoRa 终端固件开发，涉及显示界面、低功耗状态切换和应用固件升级机制。升级相关功能应根据当前固件版本和实际联调结果描述，避免将方案设计或局部验证表述为完整量产能力。',
+    contributions: [
+      '使用 STM32WLE5 与 HAL/CubeMX 开展终端固件开发。',
+      '集成 LVGL 显示界面，并处理屏幕驱动和输入交互相关问题。',
+      '规划应用程序地址布局、升级标志与 IAP 流程。',
+      '调试串口升级传输流程，并分析 Ymodem 交互中的兼容性问题。',
+    ],
+    highlights: ['LoRa 终端', 'LVGL 人机交互', 'IAP 升级流程'],
+  },
+  {
+    id: 'rk3576-linux', number: '06', category: 'EMBEDDED LINUX', title: 'RK3576 嵌入式 Linux 平台',
+    summary: '开展 ARM Linux 环境下的网络接口配置、通信验证和工业控制平台集成。',
+    platform: 'RK3576 SBC', tags: ['Linux', 'Ethernet', 'TCP/IP', 'Git', 'PREEMPT_RT'],
+    accent: 'green', status: '学习与验证',
+    overview: '项目围绕 RK3576 嵌入式 Linux 开发板，实践多网口配置、网络连通性验证和应用部署相关工作，并逐步学习 Linux 实时性及 PREEMPT_RT。实时性优化属于后续学习与验证方向，具体结论需要结合测试数据说明。',
+    contributions: [
+      '配置开发板的多个以太网接口，并根据实际网络拓扑设置地址。',
+      '进行基础网络连通性与 TCP/IP 通信验证。',
+      '整理开发板应用构建、部署和调试流程。',
+      '学习 Linux 实时调度机制及 PREEMPT_RT 的使用场景。',
+    ],
+    highlights: ['ARM Linux', '多网口配置', '实时性学习'],
+  },
+]
